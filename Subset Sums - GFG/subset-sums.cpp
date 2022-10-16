@@ -13,8 +13,9 @@ public:
             v.push_back(sum);
             return;
         }
-        sums(arr,i+1,v,N,sum+arr[i]);
+        
         sums(arr,i+1,v,N,sum);
+        sums(arr,i+1,v,N,sum+arr[i]);
         
     }
     vector<int> subsetSums(vector<int> &arr, int N)
