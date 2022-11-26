@@ -6,25 +6,21 @@ using namespace std;
 class Solution
 {
 public:
-    void sums(vector<int> arr,int i,vector<int> &v,int N,int sum){
-        
-        if(i==N){
-            // cout<<sum;
-            v.push_back(sum);
+    void subset_sum(int i,int sum,vector<int> v,int N,vector<int> &ans){
+        if(i == N){
+            ans.push_back(sum);
             return;
         }
-        
-        sums(arr,i+1,v,N,sum);
-        sums(arr,i+1,v,N,sum+arr[i]);
-        
+        subset_sum(i+1,sum+v[i],v,N,ans);
+        subset_sum(i+1,sum,v,N,ans);
     }
-    vector<int> subsetSums(vector<int> &arr, int N)
+    vector<int> subsetSums(vector<int> arr, int N)
     {
         // Write Your Code here
-        int sum = 0;
-        vector<int> v;
-        sums(arr,0,v,N,0);
-        return v;
+        vector<int> ans;
+        subset_sum(0,0,arr,N,ans);
+        return ans;
+        
     }
 };
 
